@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'contacts',
     'authentication',
     'drf_yasg',
+    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
@@ -55,6 +56,7 @@ JWT_SECRET = os.environ.get('JWT_SECRET', '')
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -102,6 +104,12 @@ DATABASES = {
     }
 }
 
+
+# CORS WHITELIST
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
